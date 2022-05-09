@@ -1,0 +1,10 @@
+<form [formGroup]="foodtrackForm">
+
+  <mat-form-field appearance="fill">
+    <mat-label>FoodTrack</mat-label>
+    <mat-select formControlName="foodtrackId" data-testid="select-foodtrack">
+      <mat-option *ngFor="let foodtrack of foodtracks$|async" [value]="foodtrack.id" data-testid="mat-option">{{foodtrack.username}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+</form>

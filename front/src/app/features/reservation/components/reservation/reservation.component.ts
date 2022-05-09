@@ -9,9 +9,9 @@ import { ReservationStoreService } from '../../services/reservation-store.servic
 import { SelectDateComponent } from '../select-date/select-date.component';
 import { SelectLocationComponent } from '../select-location/select-location.component';
 import { SelectSocietyComponent } from '../select-society/select-society.component';
-import { SelectUserComponent } from '../select-user/select-user.component';
+import { SelectFoodtrackComponent } from '../select-foodtrack/select-foodtrack.component';
 
-type reservationFormType = {society: any, user: any, no: any, date: any};
+type reservationFormType = {society: any, foodtrack: any, no: any, date: any};
 
 @Component({
   selector: 'app-reservation',
@@ -20,7 +20,7 @@ type reservationFormType = {society: any, user: any, no: any, date: any};
 })
 export class ReservationComponent implements OnInit, OnDestroy {
   @ViewChild(SelectSocietyComponent, { static: true }) public selectSocietyComponent!: SelectSocietyComponent;
-  @ViewChild(SelectUserComponent, { static: true }) public selectUserComponent!: SelectUserComponent;
+  @ViewChild(SelectFoodtrackComponent, { static: true }) public selectFoodtrackComponent!: SelectFoodtrackComponent;
   @ViewChild(SelectDateComponent, { static: true }) public selectDateComponent!: SelectDateComponent;
   @ViewChild(SelectLocationComponent, { static: true }) public selectLocationComponent!: SelectLocationComponent;
 
@@ -40,17 +40,17 @@ export class ReservationComponent implements OnInit, OnDestroy {
     // définition du formulaire
     this.reservationForm = this.formBuilder.group({
       society: this.selectSocietyComponent.createFormGroup(),
-      user: this.selectUserComponent.createFormGroup(),
+      foodtrack: this.selectFoodtrackComponent.createFormGroup(),
       date: this.selectDateComponent.createFormGroup(),
       no: this.selectLocationComponent.createFormGroup(),
     })
     // écoute la sélection de l'utilisateur (foodtrack) et de la société, si ok, charge les réservations
-    this.sub = this.reservationForm.controls['user'].valueChanges
+    this.sub = this.reservationForm.controls['foodtrack'].valueChanges
     .pipe(
       combineLatestWith(this.reservationForm.controls['society'].valueChanges)
-    ).subscribe((data: {userId: number, societyId: number}[]) => {
+    ).subscribe((data: {foodtrackId: number, societyId: number}[]) => {
       this.resetControls();
-      this.httpService.setReservations(data[0].userId,  data[1].societyId);
+      this.httpService.setReservations(data[0].foodtrackId,  data[1].societyId);
     })
     // écoute si il y a un chargement de données provenant de l'api
     this.subLoading = this.reservationStoreService.getLoading().subscribe((loading: boolean) => {
@@ -86,7 +86,7 @@ export class ReservationComponent implements OnInit, OnDestroy {
   conv(values: reservationFormType): ReservationSave {
     const date = new Date(this.reservationForm.value.date.date);
     const dateConv = new Date(date.setDate(date.getDate() + 1)).toISOString().slice(0, 10);
-    return {date: dateConv, no: values.no.no, societyId: values.society.societyId, foodtrackId: values.user.userId} as ReservationSave;
+    return {date: dateConv, no: values.no.no, societyId: values.society.societyId, foodtrackId: values.foodtrack.foodtrackId} as ReservationSave;
   }
 
   ngOnDestroy(): void {

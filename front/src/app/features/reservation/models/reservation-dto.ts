@@ -9,5 +9,5 @@ export interface ReservationDto {
   day: DayDto;
   location: LocationDto;
   society: SocietyDto;
-  user: FoodtrackDto;
+  foodtrack: FoodtrackDto;
 }

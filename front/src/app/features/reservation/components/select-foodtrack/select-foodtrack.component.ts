@@ -5,26 +5,26 @@ import { HttpService } from '../../services/http.service';
 import { ReservationStoreService } from '../../services/reservation-store.service';
 
 @Component({
-  selector: 'app-select-user',
-  templateUrl: './select-user.component.html',
-  styleUrls: ['./select-user.component.scss']
+  selector: 'app-select-foodtrack',
+  templateUrl: './select-foodtrack.component.html',
+  styleUrls: ['./select-foodtrack.component.scss']
 })
-export class SelectUserComponent implements OnInit {
-  userForm!: FormGroup;
-  users$!: Observable<any>;
+export class SelectFoodtrackComponent implements OnInit {
+  foodtrackForm!: FormGroup;
+  foodtracks$!: Observable<any>;
 
   constructor(private formBuilder: FormBuilder, private httpService: HttpService, private reservationStoreService: ReservationStoreService) {
-    this.userForm = this.formBuilder.group({
-      userId: ['', Validators.required],
+    this.foodtrackForm = this.formBuilder.group({
+      foodtrackId: ['', Validators.required],
     });
-    this.users$ = httpService.getFoodtracks();
+    this.foodtracks$ = httpService.getFoodtracks();
   }
 
   ngOnInit(): void {
   }
 
   public createFormGroup(): FormGroup {
-    return this.userForm;
+    return this.foodtrackForm;
   }
 
 }

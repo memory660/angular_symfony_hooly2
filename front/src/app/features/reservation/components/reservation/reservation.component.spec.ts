@@ -24,7 +24,7 @@ import { ReservationListComponent } from '../reservation-list/reservation-list.c
 import { SelectDateComponent } from '../select-date/select-date.component';
 import { SelectLocationComponent } from '../select-location/select-location.component';
 import { SelectSocietyComponent } from '../select-society/select-society.component';
-import { SelectUserComponent } from '../select-user/select-user.component';
+import { SelectFoodtrackComponent } from '../select-foodtrack/select-foodtrack.component';
 
 import { ReservationComponent } from './reservation.component';
 
@@ -34,7 +34,7 @@ describe('ReservationComponent', () => {
 
   // les composants du fichier .html (3)
   let selectSocietyComponent: DebugElement;
-  let selectUserComponent: DebugElement;
+  let selectFoodtrackComponent: DebugElement;
   let selectDateComponent: DebugElement;
   let selectLocationComponent: DebugElement;
   let reservationListComponent: DebugElement;
@@ -52,7 +52,7 @@ describe('ReservationComponent', () => {
     await TestBed.configureTestingModule({
       imports: [HttpClientModule, ReactiveFormsModule, FormsModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatButtonModule, NoopAnimationsModule,
          MatIconModule, MatCardModule, MatDatepickerModule, MatNativeDateModule, ],
-      declarations: [ ReservationComponent, ReservationListComponent, SelectSocietyComponent, SelectUserComponent, SelectDateComponent, SelectLocationComponent, ],
+      declarations: [ ReservationComponent, ReservationListComponent, SelectSocietyComponent, SelectFoodtrackComponent, SelectDateComponent, SelectLocationComponent, ],
       providers: [
         //{ provide: HttpService, useValue: fakeHttpService },
         { provide: ReservationStoreService, useValue: fakeReservationStoreService },
@@ -68,7 +68,7 @@ describe('ReservationComponent', () => {
     fixture.detectChanges();
 
     selectSocietyComponent = findComponent(fixture, 'app-select-society');
-    selectUserComponent = findComponent(fixture, 'app-select-user');
+    selectFoodtrackComponent = findComponent(fixture, 'app-select-foodtrack');
     selectDateComponent = findComponent(fixture, 'app-select-date');
     selectLocationComponent = findComponent(fixture, 'app-select-location');
     reservationListComponent = findComponent(fixture, 'app-reservation-list');
@@ -76,7 +76,7 @@ describe('ReservationComponent', () => {
 
   it('should create components', () => {
     expect(component).toBeTruthy()
-    expect(selectUserComponent).toBeTruthy();
+    expect(selectFoodtrackComponent).toBeTruthy();
     expect(selectSocietyComponent).toBeTruthy();
     expect(reservationListComponent).toBeTruthy();
     expect(selectDateComponent).toBeTruthy();

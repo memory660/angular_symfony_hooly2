@@ -9,7 +9,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import {MatCardModule} from '@angular/material/card';
 import { ReservationListComponent } from './components/reservation-list/reservation-list.component';
 import { SelectSocietyComponent } from './components/select-society/select-society.component';
-import { SelectUserComponent } from './components/select-user/select-user.component';
+
 import { SelectDateComponent } from './components/select-date/select-date.component';
 import { SelectLocationComponent } from './components/select-location/select-location.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
@@ -18,13 +18,14 @@ import {MatButtonModule} from '@angular/material/button';
 import { MAT_DATE_FORMATS } from '@angular/material/core';
 import { MAT_MOMENT_DATE_ADAPTER_OPTIONS, MAT_MOMENT_DATE_FORMATS, MomentDateAdapter } from '@angular/material-moment-adapter';
 import { LoadingInterceptor } from 'src/app/core/interceptors/LoadingInterceptort';
+import { SelectFoodtrackComponent } from './components/select-foodtrack/select-foodtrack.component';
 
 @NgModule({
   declarations: [
     ReservationComponent,
     ReservationListComponent,
     SelectSocietyComponent,
-    SelectUserComponent,
+    SelectFoodtrackComponent,
     SelectDateComponent,
     SelectLocationComponent,
 

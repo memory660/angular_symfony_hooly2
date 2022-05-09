@@ -7,22 +7,22 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
-import { SelectUserComponent } from './select-user.component';
+import { SelectFoodtrackComponent } from './select-foodtrack.component';
 
-describe('SelectUserComponent', () => {
-  let component: SelectUserComponent;
-  let fixture: ComponentFixture<SelectUserComponent>;
+describe('SelectFoodtrackComponent', () => {
+  let component: SelectFoodtrackComponent;
+  let fixture: ComponentFixture<SelectFoodtrackComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [ReactiveFormsModule, FormsModule, HttpClientModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatButtonModule, NoopAnimationsModule],
-      declarations: [ SelectUserComponent ]
+      declarations: [ SelectFoodtrackComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SelectUserComponent);
+    fixture = TestBed.createComponent(SelectFoodtrackComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
