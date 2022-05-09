@@ -1,0 +1,10 @@
+<form [formGroup]="societyForm">
+
+  <mat-form-field appearance="fill">
+    <mat-label>Société</mat-label>
+    <mat-select formControlName="societyId" data-testid="select-society">
+      <mat-option *ngFor="let society of societies$|async" [value]="society.id">{{society.name}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+</form>

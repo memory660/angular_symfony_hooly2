@@ -1,0 +1,26 @@
+
+<div [ngClass]="{'propagation': loading === true}"></div>
+
+<app-select-user></app-select-user>
+
+<app-select-society></app-select-society>
+
+<app-select-date [societyObs$]="reservationForm.controls['society'].valueChanges"></app-select-date>
+
+<app-select-location  [dateObs$]="reservationForm.controls['date'].valueChanges" [societyObs$]="reservationForm.controls['society'].valueChanges"></app-select-location>
+
+<div>
+  <div class="lleft">
+    <button mat-raised-button color="primary" (click)="onRegister()" [disabled]="!reservationForm.valid || loading" data-testid="button-register">Enregistrer</button>
+  </div>
+  <div class="lleft">
+    <img *ngIf="loading" src="/assets/loading.gif" width="32" />
+  </div>
+</div>
+
+<div style="clear: both;"></div>
+
+<hr>
+
+<app-reservation-list></app-reservation-list>
+

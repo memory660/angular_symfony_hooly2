@@ -1,0 +1,11 @@
+<ng-container *ngIf="!(loading$|async) else  loadingTemplate">
+  <mat-card *ngFor="let reservation of reservations$ |async">
+    <mat-card-subtitle><b>{{reservation.id}}</b> - réservé le: <b>{{reservation.day.dateReservation.date|date: 'dd-MM-yyyy'}}</b> - emplacement n°: <b>{{reservation.location.locationNo}}</b></mat-card-subtitle>
+    <mat-card-actions>
+      <button mat-button disabled> <mat-icon aria-hidden="false" aria-label="Example home icon">delete</mat-icon> </button>
+      <button mat-button disabled> <mat-icon aria-hidden="false" aria-label="Example home icon">edit</mat-icon> </button>
+    </mat-card-actions>
+  </mat-card>
+</ng-container>
+
+<ng-template #loadingTemplate>Chargement en cours...</ng-template>

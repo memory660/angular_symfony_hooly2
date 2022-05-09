@@ -1,0 +1,10 @@
+<form [formGroup]="locationForm">
+
+  <mat-form-field appearance="fill">
+    <mat-label>Emplacement</mat-label>
+    <mat-select formControlName="no" data-testid="select-location">
+      <mat-option *ngFor="let no of locations$|async" [value]="no">{{no}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+</form>
